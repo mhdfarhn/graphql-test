@@ -1,0 +1,11 @@
+query Continents($filter: ContinentFilterInput = {}) {
+  continents(filter: $filter) {
+    code
+    name
+    countries {
+      code
+      name
+      capital
+    }
+  }
+}

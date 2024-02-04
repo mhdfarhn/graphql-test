@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          assetsPath: lib/**
+          outputDirectory: generated
+          clients:
+            - graphql
+            # - graphql_flutter

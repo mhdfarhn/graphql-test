@@ -1,0 +1,74 @@
+type Query {
+  continent(code: ID!): Continent
+  continents(filter: ContinentFilterInput = {}): [Continent!]!
+  country(code: ID!): Country
+  countries(filter: CountryFilterInput = {}): [Country!]!
+  language(code: ID!): Language
+  languages(filter: LanguageFilterInput = {}): [Language!]!
+}
+
+type Continent {
+  code: ID!
+  countries: [Country!]!
+  name: String!
+}
+
+type ContinentFilterInput {
+  code: StringQueryOperatorInput
+}
+
+type Country {
+  awsRegion: String!
+  capital: String
+  code: ID!
+  continent: Continent!
+  currencies: [String!]!
+  currency: String
+  emoji: String!
+  emojiU: String!
+  languages: [Language!]!
+  name(lang: String): String!
+  native: String!
+  phone: String!
+  phones: [String!]!
+  states: [State!]!
+  subdivisions: [Subdivision!]!
+}
+
+type State {
+  code: String
+  country: Country!
+  name: String!
+}
+
+type Subdivision {
+  code: ID!
+  emoji: String
+  name: String!
+}
+
+type CountryFilterInput {
+  code: StringQueryOperatorInput
+  continent: StringQueryOperatorInput
+  currency: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+}
+
+type Language {
+  code: ID!
+  name: String!
+  native: String!
+  rtl: Boolean!
+}
+
+type LanguageFilterInput {
+  code: StringQueryOperatorInput
+}
+
+type StringQueryOperatorInput {
+  eq: String
+  in: [String!]
+  ne: String
+  nin: [String!]
+  regex: String
+}
